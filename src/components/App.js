@@ -1,5 +1,5 @@
 import { Component } from 'react';
-// import {uuid} from 'uuidv4';
+
 import ContactList from './Contacts/ContactList';
 import ContactForm from './Contacts/ContactForm';
 
@@ -9,15 +9,15 @@ export class App extends Component {
     name: '',
   };
 
-  // handleNameChange = event =>{
-  //   this.setState({name: event.currentTarget.value})
-  // }
+  formSubmitHandler = data => {
+    this.state.contacts.push(data);
+  };
 
   render() {
     return (
       <div>
         <h2>Phonebook</h2>
-        <ContactForm></ContactForm>
+        <ContactForm onSubmit={this.formSubmitHandler}></ContactForm>
         <h2>Contacts</h2>
         <ContactList contacts={this.state.contacts} />
       </div>

@@ -1,4 +1,6 @@
 import { Component } from 'react';
+// import {uuid} from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 export class ContactForm extends Component {
   state = {
@@ -6,16 +8,29 @@ export class ContactForm extends Component {
     number: '',
   };
 
-  handleNameChange = event => {
+  nameId = uuidv4();
+  telId = uuidv4();
+
+  handleNameChange = e => {
+    const { name, value } = e.currentTarget;
     this.setState({
-      [event.currentTarget.name]: event.currentTarget.value,
+      [name]: value,
     });
   };
 
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.onSubmit(this.state);
+    this.reset();
+  };
+
+  reset = () => {
+    this.setState({ name: '', number: '' });
+  };
   render() {
     return (
-      <>
-        <label>
+      <form onSubmit={this.handleSubmit}>
+        <label htmlFor={this.nameId}>
           {' '}
           Name
           <input
@@ -24,12 +39,13 @@ export class ContactForm extends Component {
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
             required
+            id={this.nameId}
             value={this.state.name}
             onChange={this.handleNameChange}
           />
         </label>
 
-        <label>
+        <label htmlFor={this.telId}>
           {' '}
           Telephone
           <input
@@ -38,12 +54,13 @@ export class ContactForm extends Component {
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
             required
+            id={this.telId}
             value={this.state.number}
             onChange={this.handleNameChange}
           />
         </label>
-        <button>Add to contacts</button>
-      </>
+        <button type="submit">Add to contacts</button>
+      </form>
     );
   }
 }
