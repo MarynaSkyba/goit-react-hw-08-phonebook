@@ -1,5 +1,4 @@
 import { Component } from 'react';
-// import {uuid} from 'uuid';
 import { v4 as uuidv4 } from 'uuid';
 
 export class ContactForm extends Component {
@@ -20,7 +19,7 @@ export class ContactForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit(this.state);
+    this.props.onSubmit(this.state.name, this.state.number);
     this.reset();
   };
 
@@ -31,7 +30,6 @@ export class ContactForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label htmlFor={this.nameId}>
-          {' '}
           Name
           <input
             type="text"
@@ -46,7 +44,6 @@ export class ContactForm extends Component {
         </label>
 
         <label htmlFor={this.telId}>
-          {' '}
           Telephone
           <input
             type="tel"
