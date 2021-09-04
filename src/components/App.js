@@ -22,6 +22,10 @@ export class App extends Component {
   };
 
   formSubmitHandler = (name, number) => {
+    if (this.state.contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase())) {
+      alert(`${name} is already in contacts!`);
+      return;
+    }
     const newContact = {
       id: uuidv4(),
       name,

@@ -18,14 +18,16 @@ export class ContactForm extends Component {
   };
 
   handleSubmit = e => {
+    const { name, number } = this.state;
     e.preventDefault();
-    this.props.onSubmit(this.state.name, this.state.number);
+    this.props.onSubmit(name, number);
     this.reset();
   };
 
   reset = () => {
     this.setState({ name: '', number: '' });
   };
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
