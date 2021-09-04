@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import ContactList from './Contacts/ContactList';
 import ContactForm from './Contacts/ContactForm';
 import Filter from './Filter/Filter';
+import { Title } from './Contacts/Title.styled';
 
 export class App extends Component {
   state = {
@@ -48,9 +49,9 @@ export class App extends Component {
 
     return (
       <div>
-        <h2>Phonebook</h2>
+        <Title>Phonebook</Title>
         <ContactForm onSubmit={this.formSubmitHandler} />
-        <h2>Contacts</h2>
+        <Title>Contacts</Title>
         <Filter value={this.state.filter} onChange={this.changeFilter} />
         <ContactList contacts={activeContacts} onDeleteContacts={this.deleteContacts} />
       </div>
