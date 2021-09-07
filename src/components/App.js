@@ -56,6 +56,7 @@ export class App extends Component {
 
   changeBlur = e => {
     e.currentTarget.value = '';
+    this.state.filter = '';
   };
 
   filteredContacts = () => {
