@@ -41,19 +41,22 @@ export class App extends Component {
     this.setState({ filter: e.currentTarget.value });
   };
 
-  render() {
-    const normalizedFilter = this.state.filter.toLocaleLowerCase();
-    const activeContacts = this.state.contacts.filter(contact =>
-      contact.name.toLocaleLowerCase().includes(normalizedFilter),
-    );
+  filteredContacts = () => {
+    const { filter, contacts } = this.state;
 
+    return contacts.filter(contact =>
+      contact.name.toLocaleLowerCase().includes(filter.toLocaleLowerCase()),
+    );
+  };
+
+  render() {
     return (
       <div>
         <Title>Phonebook</Title>
         <ContactForm onSubmit={this.formSubmitHandler} />
         <Title>Contacts</Title>
         <Filter value={this.state.filter} onChange={this.changeFilter} />
-        <ContactList contacts={activeContacts} onDeleteContacts={this.deleteContacts} />
+        <ContactList contacts={this.filteredContacts()} onDeleteContacts={this.deleteContacts} />
       </div>
     );
   }
