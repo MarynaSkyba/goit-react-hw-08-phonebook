@@ -1,67 +1,81 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Form, Label, Input, Button } from './ContactForm.styled';
 
-export class ContactForm extends Component {
-  state = {
-    name: '',
-    number: '',
+// const useLocalStorage = (key, defaultValue) => {
+//   const [state, setState] = useState (()=> {
+//     return JSON.parse(window.localStorage.getItem(key)) ?? defaultValue;
+//   });
+//   useEffect(()=> {
+//     window.localStorage.setItem(key, JSON.stringify(state));
+
+//   })
+
+//   return [state, setState];
+// }
+
+export default function ContactForm({ onSubmit }) {
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
+
+  const nameId = uuidv4();
+  const telId = uuidv4();
+
+  const handleChange = e => {
+    const { name, value } = e.target;
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+      case 'number':
+        setNumber(value);
+        break;
+      default:
+        return;
+    }
   };
 
-  nameId = uuidv4();
-  telId = uuidv4();
-
-  handleNameChange = e => {
-    const { name, value } = e.currentTarget;
-    this.setState({
-      [name]: value,
-    });
-  };
-
-  handleSubmit = e => {
-    const { name, number } = this.state;
+  const handleSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit(name, number);
-    this.reset();
+    console.log(name, number);
+    onSubmit(name, number);
+    // reset();
   };
 
-  reset = () => {
-    this.setState({ name: '', number: '' });
-  };
+  // const reset = () => {
+  //   return setName({name: ''}), setNumber ({number: ''})
+  //  };
 
-  render() {
-    return (
-      <Form onSubmit={this.handleSubmit}>
-        <Label htmlFor={this.nameId}>
-          Name
-          <Input
-            type="text"
-            name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-            required
-            id={this.nameId}
-            value={this.state.name}
-            onChange={this.handleNameChange}
-          />
-        </Label>
+  return (
+    <Form onSubmit={handleSubmit}>
+      <Label htmlFor={nameId}>
+        Name
+        <Input
+          type="text"
+          name="name"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+          required
+          id={nameId}
+          value={name}
+          onChange={handleChange}
+        />
+      </Label>
 
-        <Label htmlFor={this.telId}>
-          Telephone
-          <Input
-            type="tel"
-            name="number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
-            required
-            id={this.telId}
-            value={this.state.number}
-            onChange={this.handleNameChange}
-          />
-        </Label>
-        <Button type="submit">Add to contacts</Button>
-      </Form>
-    );
-  }
+      <Label htmlFor={telId}>
+        Telephone
+        <Input
+          type="tel"
+          name="number"
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+          required
+          id={telId}
+          value={number}
+          onChange={handleChange}
+        />
+      </Label>
+      <Button type="submit">Add to contacts</Button>
+    </Form>
+  );
 }
-export default ContactForm;
