@@ -23,7 +23,7 @@ export default function App() {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
-  const formSubmitHandler = ({ name, number }) => {
+  const formSubmitHandler = (name, number) => {
     if (contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase())) {
       alert(`${name} is already in contacts`);
       return;
@@ -59,7 +59,7 @@ export default function App() {
       <ContactForm onSubmit={formSubmitHandler} />
       <Title>Contacts</Title>
       <Filter value={filter} onChange={changeFilter} onBlur={changeBlur} />
-      <ContactList contacts={filteredContacts} onDeleteContacts={deleteContacts} />
+      <ContactList contacts={filteredContacts()} onDeleteContacts={deleteContacts} />
     </div>
   );
 }
