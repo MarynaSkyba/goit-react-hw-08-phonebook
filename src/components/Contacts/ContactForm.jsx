@@ -2,18 +2,6 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Form, Label, Input, Button } from './ContactForm.styled';
 
-// const useLocalStorage = (key, defaultValue) => {
-//   const [state, setState] = useState (()=> {
-//     return JSON.parse(window.localStorage.getItem(key)) ?? defaultValue;
-//   });
-//   useEffect(()=> {
-//     window.localStorage.setItem(key, JSON.stringify(state));
-
-//   })
-
-//   return [state, setState];
-// }
-
 export default function ContactForm({ onSubmit }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -37,14 +25,8 @@ export default function ContactForm({ onSubmit }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(name, number);
     onSubmit(name, number);
-    // reset();
   };
-
-  // const reset = () => {
-  //   return setName({name: ''}), setNumber ({number: ''})
-  //  };
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -79,3 +61,15 @@ export default function ContactForm({ onSubmit }) {
     </Form>
   );
 }
+
+// const useLocalStorage = (key, defaultValue) => {
+//   const [state, setState] = useState (()=> {
+//     return JSON.parse(window.localStorage.getItem(key)) ?? defaultValue;
+//   });
+//   useEffect(()=> {
+//     window.localStorage.setItem(key, JSON.stringify(state));
+
+//   })
+
+//   return [state, setState];
+// }
