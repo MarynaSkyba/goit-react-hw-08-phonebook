@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import ContactList from './Contacts/ContactList';
-import ContactForm from './Contacts/ContactForm';
-import Filter from './Filter/Filter';
-import { Title } from './Contacts/Title.styled';
+import ContactList from './contactsList/ContactList';
+import ContactForm from './contactsForm/ContactForm';
+import Filter from './filter/Filter';
+import { Title } from './App/Title.styled';
 
 export default function App() {
   const [contacts, setContacts] = useState([
