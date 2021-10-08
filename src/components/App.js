@@ -4,62 +4,40 @@ import ContactList from './contactsList/ContactList';
 import ContactForm from './contactsForm/ContactForm';
 import Filter from './filter/Filter';
 import { Title } from './App/Title.styled';
+import store from '../redux/store';
+
+console.log(store.getState());
 
 export default function App() {
-  const [contacts, setContacts] = useState([
-    { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-    { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-    { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-    { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-  ]);
-  const [filter, setFilter] = useState('');
+  // useEffect(() => {
+  //   const currentContacts = JSON.parse(localStorage.getItem('contacts')) ?? '';
+  //   currentContacts && setContacts(currentContacts);
+  // }, []);
 
-  useEffect(() => {
-    const currentContacts = JSON.parse(localStorage.getItem('contacts')) ?? '';
-    currentContacts && setContacts(currentContacts);
-  }, []);
+  // useEffect(() => {
+  //   localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
-
-  const formSubmitHandler = (name, number) => {
-    if (contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase())) {
-      alert(`${name} is already in contacts`);
-      return;
-    }
-    const newContact = {
-      id: uuidv4(),
-      name,
-      number,
-    };
-    setContacts(prevState => [newContact, ...prevState]);
-  };
-
-  const deleteContacts = contactId => {
-    setContacts(prevState => prevState.filter(contact => contact.id !== contactId));
-  };
-
-  const changeFilter = e => {
-    setFilter(e.currentTarget.value);
-  };
-
-  const changeBlur = e => {
-    e.currentTarget.value = '';
-    setFilter('');
-  };
-
-  const filteredContacts = () => {
-    return contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
-  };
+  // const formSubmitHandler = (name, number) => {
+  //   if (contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase())) {
+  //     alert(`${name} is already in contacts`);
+  //     return;
+  //   }
+  //   const newContact = {
+  //     id: uuidv4(),
+  //     name,
+  //     number,
+  //   };
+  //   setContacts(prevState => [newContact, ...prevState]);
+  // };
 
   return (
     <div>
       <Title>Phonebook</Title>
-      <ContactForm onSubmit={formSubmitHandler} />
+      <ContactForm />
       <Title>Contacts</Title>
-      <Filter value={filter} onChange={changeFilter} onBlur={changeBlur} />
-      <ContactList contacts={filteredContacts()} onDeleteContacts={deleteContacts} />
+      <Filter />
+      <ContactList />
     </div>
   );
 }
