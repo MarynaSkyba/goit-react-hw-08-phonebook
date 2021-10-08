@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
-import actions from './phonebook-actions';
+import { deleteContacts, newContact, changeFilter } from './phonebook-actions';
 
 const contacts = createReducer(
   [
@@ -10,19 +10,19 @@ const contacts = createReducer(
     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
   ],
   {
-    [actions.newContact]: (state, { payload }) => {
+    [newContact]: (state, { payload }) => {
       if (state.find(contact => contact.name.toLowerCase() === payload.name.toLowerCase())) {
         alert(`${payload.name} is already in contacts`);
         return state;
       }
       return [payload, ...state];
     },
-    [actions.deleteContacts]: (state, { payload }) => state.filter(({ id }) => id !== payload),
+    [deleteContacts]: (state, { payload }) => state.filter(({ id }) => id !== payload),
   },
 );
 
 const filter = createReducer('', {
-  [actions.changeFilter]: (_, { payload }) => payload,
+  [changeFilter]: (_, { payload }) => payload,
 });
 
 export default combineReducers({ contacts, filter });

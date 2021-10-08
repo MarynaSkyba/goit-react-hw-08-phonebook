@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilter } from '../../redux/phonebook/phonebook-selector';
-import phonebookActions from '../../redux/phonebook/phonebook-actions';
+import { changeFilter } from '../../redux/phonebook/phonebook-actions';
 import { Label, Input } from './Filter.styled';
 
 const Filter = () => {
   const value = useSelector(getFilter);
   const dispatch = useDispatch();
 
-  const onChange = event => dispatch(phonebookActions.changeFilter(event.target.value));
-  const onBlur = () => dispatch(phonebookActions.changeFilter(''));
+  const onChange = event => dispatch(changeFilter(event.target.value));
+  const onBlur = () => dispatch(changeFilter(''));
 
   return (
     <Label>
