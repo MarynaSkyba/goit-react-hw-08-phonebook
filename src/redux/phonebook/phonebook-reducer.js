@@ -1,3 +1,4 @@
+import { unstable_concurrentAct } from 'react-dom/test-utils';
 import { combineReducers } from 'redux';
 import types from './phonedook-types';
 
@@ -12,6 +13,10 @@ const contacts = (
 ) => {
   switch (type) {
     case types.ADD:
+      if (state.find(contact => contact.name.toLowerCase() === payload.name.toLowerCase())) {
+        alert(`${payload.name} is already in contacts`);
+        return state;
+      }
       return [payload, ...state];
 
     case types.DELETE:
