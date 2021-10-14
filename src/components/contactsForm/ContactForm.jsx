@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from 'react-redux';
-import { newContact } from '../../redux/phonebook/phonebook-actions';
+import * as phonebookOperation from '../../redux/phonebook/phonebook-operation';
 import { Form, Label, Input, Button } from './ContactForm.styled';
 
 export function ContactForm() {
   const dispatch = useDispatch();
-  const onSubmit = (name, number) => dispatch(newContact(name, number));
+  const onSubmit = (name, number) =>
+    dispatch(phonebookOperation.addContactAction({ name, number }));
 
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
