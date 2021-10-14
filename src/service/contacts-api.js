@@ -16,10 +16,3 @@ export async function deleteContacts(id) {
   await axios.delete(`contacts/${id}`);
   return id;
 }
-
-// async function fetchContactsError(url = '', config = {}) {
-//     const response = await fetch(url, config);
-//     return response.ok?
-//     await response.json()
-//     : Promise.reject(new Error('Not found'));
-// }

@@ -16,6 +16,8 @@ export const deleteContactAction = createAsyncThunk('contacts/deleteContacts', a
   return id;
 });
 
+//это я оставила для себя какой есть еще вариант
+
 // export const fetchContactsAction =() => async dispatch => {
 //     dispatch(contactAction.fetchRequest());
 //     try {
