@@ -1,24 +1,9 @@
 {
   "contacts": [
     {
-      "id": "id-3",
-      "name": "Eden Clements",
-      "number": "645-17-79"
-    },
-    {
-      "name": "Марина",
-      "number": "+345575675675",
-      "id": "vwgLSQu"
-    },
-    {
       "name": "Марина",
       "number": "+123-0000-00",
-      "id": "iYpWgQc"
-    },
-    {
-      "name": "Марина",
-      "number": "+345575675675",
-      "id": "-1KmULe"
+      "id": "-kQQl4V"
     }
   ]
 }
