@@ -1,0 +1,20 @@
+.nav {
+  display: block;
+  height: 70px;
+  background-color: gainsboro;
+}
+
+.link {
+  display: inline-block;
+  text-decoration: none;
+  padding: 20px;
+  font-weight: 700;
+  color: black;
+  font-size: 20px;
+  border: 1 px solid red;
+}
+
+.activeLink {
+  composes: link;
+  color: #a52a62;
+}

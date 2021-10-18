@@ -10,3 +10,8 @@ export const Title = styled.h2`
   text-align: center;
   font-size: 34px;
 `;
+
+export const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
