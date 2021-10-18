@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import { changeFilter } from './phonebook-actions';
-import { fetchContactsAction, addContactAction, deleteContactAction } from './phonebook-operation';
+import { fetchContactsAction, addContactAction, deleteContactAction } from './phonebook-operations';
 
 const entities = createReducer([], {
   [fetchContactsAction.fulfilled]: (_state, action) => action.payload,

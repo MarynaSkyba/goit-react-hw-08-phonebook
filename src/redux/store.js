@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import phonebookReducer from './phonebook/phonebook-reducer';
+import phonebookReducer from './phonebook/phonebook-reducers';
 
 export const store = configureStore({
   reducer: {
@@ -7,5 +7,3 @@ export const store = configureStore({
   },
   devTools: process.env.NODE_ENV === 'development',
 });
-
-export default store;

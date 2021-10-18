@@ -1,7 +1,7 @@
-import ContactList from './contactsList/ContactList';
-import ContactForm from './contactsForm/ContactForm';
-import Filter from './filter/Filter';
-import { Title } from './App/Title.styled';
+import ContactList from '../ContactsList/ContactList';
+import ContactForm from '../ContactsForm/ContactForm';
+import Filter from '../Filter/Filter';
+import { Title } from '../App/App.styled';
 
 export default function App() {
   return (

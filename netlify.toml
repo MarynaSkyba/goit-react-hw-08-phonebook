@@ -1,0 +1,8 @@
+
+[build]
+publish = "build"
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+ststus = 200
