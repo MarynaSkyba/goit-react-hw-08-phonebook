@@ -11,20 +11,30 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import phonebookReducer from './phonebook/phonebook-reducers';
+import authReducer from './auth/auth-slice';
 
 const persistConfig = {
   key: 'root',
   storage,
 };
 
-const rootReducer = combineReducers({
-  phonebook: phonebookReducer,
-});
+// const rootReducer = combineReducers({
+//   phonebook: phonebookReducer,
+// });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+// const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
 
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: {
+    auth: persistReducer(authPersistConfig, authReducer),
+    phonebook: phonebookReducer,
+  },
   devTools: process.env.NODE_ENV === 'development',
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
