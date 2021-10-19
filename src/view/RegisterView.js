@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Label, Input, Button } from '../components/ContactsForm/ContactForm.styled';
-import authOperation from '../redux/auth/auth-operations';
+import { register } from '../redux/auth/auth-operations';
 
 export default function RegisterView() {
   const [name, setName] = useState('');
@@ -9,8 +9,7 @@ export default function RegisterView() {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
-  // const onSubmit = (name, email, password) =>
-  //   dispatch(authOperation.register({ name, email, password }));
+  const onSubmit = (name, email, password) => dispatch(register({ name, email, password }));
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -30,7 +29,8 @@ export default function RegisterView() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(authOperation.register({ name, email, password }));
+    onSubmit(name, email, password);
+    // dispatch(register({ name, email, password }));
     setName('');
     setEmail('');
     setPassword('');
@@ -53,7 +53,7 @@ export default function RegisterView() {
       <Label>
         Почта
         <Input
-          type="text"
+          type="email"
           name="email"
           // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           // title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."

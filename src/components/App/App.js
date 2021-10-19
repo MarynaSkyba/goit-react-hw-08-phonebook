@@ -1,7 +1,7 @@
 import ContactList from '../ContactsList/ContactList';
 import ContactForm from '../ContactsForm/ContactForm';
 import Filter from '../Filter/Filter';
-import { Title, Container } from '../App/App.styled';
+import { Title, Container } from './App.styled';
 import { Route, Switch } from 'react-router';
 import HomeView from '../../view/HomeView';
 import LoginView from '../../view/LoginView';

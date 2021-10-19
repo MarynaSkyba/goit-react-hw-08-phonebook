@@ -13,10 +13,10 @@ import storage from 'redux-persist/lib/storage';
 import phonebookReducer from './phonebook/phonebook-reducers';
 import authReducer from './auth/auth-slice';
 
-const persistConfig = {
-  key: 'root',
-  storage,
-};
+// const persistConfig = {
+//   key: 'root',
+//   storage,
+// };
 
 // const rootReducer = combineReducers({
 //   phonebook: phonebookReducer,
