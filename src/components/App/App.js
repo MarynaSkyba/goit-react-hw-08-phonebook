@@ -1,11 +1,9 @@
-import ContactList from '../ContactsList/ContactList';
-import ContactForm from '../ContactsForm/ContactForm';
-import Filter from '../Filter/Filter';
-import { Title, Container } from './App.styled';
+import { Container } from './App.styled';
 import { Route, Switch } from 'react-router';
 import HomeView from '../../view/HomeView';
 import LoginView from '../../view/LoginView';
 import RegisterView from '../../view/RegisterView';
+import ContactsView from '../../view/ContactsView';
 import AppBar from '../AppBar/AppBar';
 
 export default function App() {
@@ -18,7 +16,7 @@ export default function App() {
         <Route exact path="/" component={HomeView} />
         <Route path="/register" component={RegisterView} />
         <Route path="/login" component={LoginView} />
-        {/* <Route path = "/contacts" component={ContactsView} /> */}
+        <Route path="/contacts" component={ContactsView} />
       </Switch>
 
       {/* <Title>Phonebook</Title>
