@@ -15,7 +15,7 @@ export default function ContactsView(params) {
   return (
     <div>
       <ContactForm />
-      {/* <Filter /> */}
+      <Filter />
       <ContactList />
     </div>
   );
