@@ -5,8 +5,17 @@ import LoginView from '../../view/LoginView';
 import RegisterView from '../../view/RegisterView';
 import ContactsView from '../../view/ContactsView';
 import AppBar from '../AppBar/AppBar';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchCurrentUser } from '../../redux/auth/auth-operations';
 
 export default function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
+
   return (
     <div>
       <Container>
