@@ -1,5 +1,6 @@
-// import { Container } from './App.styled';
 import { Switch } from 'react-router';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import HomeView from '../../view/HomeView';
 import LoginView from '../../view/LoginView';
 import RegisterView from '../../view/RegisterView';
@@ -7,8 +8,6 @@ import ContactsView from '../../view/ContactsView';
 import PrivateRoute from '../PrivateRoute';
 import PublicRoute from '../PublicRouter';
 import AppBar from '../AppBar/AppBar';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import { fetchCurrentUser } from '../../redux/auth/auth-operations';
 import authSelectors from '../../redux/auth/auth-selectors';
 
@@ -30,11 +29,11 @@ export default function App() {
             <HomeView />
           </PublicRoute>
 
-          <PublicRoute exact path="/register" restricted>
+          <PublicRoute exact path="/register" redirectTo="/contacts" restricted>
             <RegisterView />
           </PublicRoute>
 
-          <PublicRoute exact path="/login" restricted redirectTo="/contacts">
+          <PublicRoute exact path="/login" redirectTo="/contacts" restricted>
             <LoginView />
           </PublicRoute>
 

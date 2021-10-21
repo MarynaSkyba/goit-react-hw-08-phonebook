@@ -1,15 +1,11 @@
 import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from 'react-redux';
 import * as phonebookOperation from '../../redux/phonebook/phonebook-operations';
 import { Form, Col, Row, Button, Container } from 'react-bootstrap';
-// import { Form, Label, Input, Button } from './ContactForm.styled';
 
 export function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const nameId = uuidv4();
-  const telId = uuidv4();
   const dispatch = useDispatch();
 
   const onSubmit = (name, number) =>

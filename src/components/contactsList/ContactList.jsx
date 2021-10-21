@@ -1,15 +1,12 @@
 import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as phonebookOperation from '../../redux/phonebook/phonebook-operations';
-import { useSelector, useDispatch } from 'react-redux';
-import { getContacts, getFilteredContacts } from '../../redux/phonebook/phonebook-selectors';
-// import { Button, ul, Name, i } from './Contactul.styled';
-// import { Button } from 'react-bootstrap';
-import { ListGroup, Container, Button, ListGroupItem } from 'react-bootstrap';
+import { getFilteredContacts } from '../../redux/phonebook/phonebook-selectors';
+import { Container, Button, ListGroupItem } from 'react-bootstrap';
 
 const ContactList = () => {
   const contacts = useSelector(getFilteredContacts);
-  console.log('contacts', contacts);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,19 +15,21 @@ const ContactList = () => {
 
   const onDeleteContacts = id => dispatch(phonebookOperation.deleteContactAction(id));
 
-  return (
-    <Container>
-      <h2>Список контактов</h2>
-      {contacts.map(({ id, name, number }) => (
-        // <ListGroup>
-        <ListGroupItem key={id}>
-          {name} : {number}
-          <Button onClick={() => onDeleteContacts(id)}>Удалить</Button>
-        </ListGroupItem>
-        // </ListGroup>
-      ))}
-    </Container>
-  );
+  if (contacts.length === 0) {
+    return <h2 className="home-title">Список контактов пуст</h2>;
+  } else {
+    return (
+      <Container>
+        <h2>Список контактов</h2>
+        {contacts.map(({ id, name, number }) => (
+          <ListGroupItem key={id}>
+            {name} : {number}
+            <Button onClick={() => onDeleteContacts(id)}>Удалить</Button>
+          </ListGroupItem>
+        ))}
+      </Container>
+    );
+  }
 };
 
 export default ContactList;
