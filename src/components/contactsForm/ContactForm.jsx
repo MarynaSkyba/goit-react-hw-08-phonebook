@@ -63,8 +63,11 @@ export function ContactForm() {
             </Col>
           </Row>
         </Form.Group>
-
-        <Button type="submit">Добавить в список контактов</Button>
+        <Row>
+          <Col>
+            <Button type="submit">Добавить в список контактов</Button>
+          </Col>
+        </Row>
       </Form>
     </Container>
   );

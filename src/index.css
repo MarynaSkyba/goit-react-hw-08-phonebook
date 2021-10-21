@@ -31,9 +31,8 @@ code {
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   border-radius: 0.25rem;
-  width: auto;
-  margin-top: 0;
 }
+
 .navbar-expand {
   justify-content: space-between;
   margin-left: auto;

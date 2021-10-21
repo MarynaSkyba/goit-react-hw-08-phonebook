@@ -22,12 +22,12 @@ const ContactList = () => {
     <Container>
       <h2>Список контактов</h2>
       {contacts.map(({ id, name, number }) => (
-        <ListGroup>
-          <ListGroupItem key={id}>
-            {name} : {number}
-            <Button onClick={() => onDeleteContacts(id)}>Удалить</Button>
-          </ListGroupItem>
-        </ListGroup>
+        // <ListGroup>
+        <ListGroupItem key={id}>
+          {name} : {number}
+          <Button onClick={() => onDeleteContacts(id)}>Удалить</Button>
+        </ListGroupItem>
+        // </ListGroup>
       ))}
     </Container>
   );

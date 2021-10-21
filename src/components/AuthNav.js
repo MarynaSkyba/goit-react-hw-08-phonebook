@@ -16,7 +16,7 @@ export default function AuthNav() {
           href="/login"
           //  className={styles.link} activeClassName={styles.activeLink}
         >
-          Логин
+          Войти
         </Nav.Link>
       </Nav>
     </Navbar>
