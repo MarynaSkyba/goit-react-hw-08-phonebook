@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import * as phonebookOperation from '../../redux/phonebook/phonebook-operations';
 import { Form, Col, Row, Button, Container } from 'react-bootstrap';
+import * as phonebookOperation from '../../redux/phonebook/phonebook-operations';
 
 export function ContactForm() {
   const [name, setName] = useState('');

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Container, Button, ListGroupItem } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import * as phonebookOperation from '../../redux/phonebook/phonebook-operations';
 import { getFilteredContacts } from '../../redux/phonebook/phonebook-selectors';
-import { Container, Button, ListGroupItem } from 'react-bootstrap';
 
 const ContactList = () => {
   const contacts = useSelector(getFilteredContacts);

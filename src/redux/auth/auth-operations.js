@@ -22,21 +22,23 @@ export const register = createAsyncThunk('auth/register', async credentials => {
   }
 });
 
-export const logIn = createAsyncThunk('auth/login', async credentials => {
+export const logIn = createAsyncThunk('auth/login', async (credentials, { rejectWithValue }) => {
   try {
     const { data } = await axios.post('/users/login', credentials);
     token.set(data.token);
     return data;
   } catch (error) {
-    // return rejectWithValue(error);
+    return rejectWithValue(error.data);
   }
 });
 
-export const logOut = createAsyncThunk('auth/logout', async () => {
+export const logOut = createAsyncThunk('auth/logout', async ({ rejectWithValue }) => {
   try {
     await axios.post('/users/logout');
     token.unset();
-  } catch (error) {}
+  } catch (error) {
+    return rejectWithValue(error.data);
+  }
 });
 
 export const fetchCurrentUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
@@ -50,6 +52,7 @@ export const fetchCurrentUser = createAsyncThunk('auth/refresh', async (_, thunk
   try {
     const { data } = await axios.get('/users/current');
     return data;
-  } catch (error) {}
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.data);
+  }
 });
-// export default { register, logIn , logOut};

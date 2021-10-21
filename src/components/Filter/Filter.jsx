@@ -14,7 +14,7 @@ const Filter = () => {
   const onBlurHandler = () => dispatch(changeFilter(''));
 
   if (contacts.length === 0) {
-    return <h2></h2>;
+    return <h2 style={{ display: 'none' }}>Поиск</h2>;
   } else {
     return (
       <Container>
