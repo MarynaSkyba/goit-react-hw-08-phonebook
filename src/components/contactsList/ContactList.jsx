@@ -24,9 +24,7 @@ const ContactList = () => {
       {contacts.map(({ id, name, number }) => (
         <ListGroup>
           <ListGroupItem key={id}>
-            <p>
-              {name} : {number}
-            </p>
+            {name} : {number}
             <Button onClick={() => onDeleteContacts(id)}>Удалить</Button>
           </ListGroupItem>
         </ListGroup>

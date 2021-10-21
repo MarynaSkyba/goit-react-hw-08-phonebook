@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilter } from '../../redux/phonebook/phonebook-selectors';
 import { changeFilter } from '../../redux/phonebook/phonebook-actions';
+import { Form, Col, Row, Button, Container } from 'react-bootstrap';
+
 // import { Label, Input } from './Filter.styled';
 
 const Filter = () => {
@@ -12,10 +14,19 @@ const Filter = () => {
   const onBlurHandler = () => dispatch(changeFilter(''));
 
   return (
-    <label>
-      Find contacts by name
-      <input type="text" value={value} onChange={onChangeHandler} onBlur={onBlurHandler} />
-    </label>
+    <Container>
+      <Form>
+        <Form.Group>
+          <h2>Найти контакт по имени </h2>
+          <Form.Control
+            type="text"
+            value={value}
+            onChange={onChangeHandler}
+            onBlur={onBlurHandler}
+          />
+        </Form.Group>
+      </Form>
+    </Container>
   );
 };
 

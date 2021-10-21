@@ -10,8 +10,8 @@ export default function UserMenu() {
 
   return (
     <Navbar>
-      <Nav.Link>Привет, {name} </Nav.Link>
-      <Button type="button" onClick={() => dispatch(logOut())}>
+      <Nav.Link>Добро пожаловать, {name} </Nav.Link>
+      <Button class="btn-logout" type="button" onClick={() => dispatch(logOut())}>
         Выйти
       </Button>
     </Navbar>
