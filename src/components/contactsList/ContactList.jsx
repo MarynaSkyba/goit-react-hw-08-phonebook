@@ -16,7 +16,7 @@ const ContactList = () => {
   const onDeleteContacts = id => dispatch(phonebookOperation.deleteContactAction(id));
 
   if (contacts.length === 0) {
-    return <h2 className="home-title">Список контактов пуст</h2>;
+    return <h2 className="home-title">Контактов в списке нет</h2>;
   } else {
     return (
       <Container>

@@ -3,10 +3,10 @@ import { Form, Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { getFilter } from '../../redux/phonebook/phonebook-selectors';
 import { changeFilter } from '../../redux/phonebook/phonebook-actions';
-import { getFilteredContacts } from '../../redux/phonebook/phonebook-selectors';
+import { getContacts } from '../../redux/phonebook/phonebook-selectors';
 
 const Filter = () => {
-  const contacts = useSelector(getFilteredContacts);
+  const contacts = useSelector(getContacts);
   const value = useSelector(getFilter);
   const dispatch = useDispatch();
 
