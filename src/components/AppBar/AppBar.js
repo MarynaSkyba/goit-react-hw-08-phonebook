@@ -3,19 +3,14 @@ import Navigation from '../Navigation';
 import AuthNav from '../AuthNav';
 import UserMenu from '../UserMenu/UserMenu';
 import authSelectors from '../../redux/auth/auth-selectors';
-
-const styles = {
-  header: {
-    display: 'flex',
-  },
-};
+import { Navbar } from 'react-bootstrap';
 
 export default function AppBar() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
-    <header style={styles.header}>
+    <Navbar>
       <Navigation />
       {isLoggedIn ? <UserMenu /> : <AuthNav />}
-    </header>
+    </Navbar>
   );
 }

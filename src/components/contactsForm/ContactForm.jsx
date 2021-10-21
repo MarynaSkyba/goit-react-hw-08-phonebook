@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from 'react-redux';
 import * as phonebookOperation from '../../redux/phonebook/phonebook-operations';
-import { Form, Label, Input, Button } from './ContactForm.styled';
+import { Form, Col, Row, Button, Container } from 'react-bootstrap';
+// import { Form, Label, Input, Button } from './ContactForm.styled';
 
 export function ContactForm() {
   const [name, setName] = useState('');
@@ -27,38 +28,45 @@ export function ContactForm() {
   };
 
   return (
-    <div>
+    <Container>
       <Form onSubmit={handleSubmit}>
-        <Label htmlFor={nameId}>
-          Name
-          <Input
-            type="text"
-            name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-            required
-            id={nameId}
-            value={name}
-            onChange={handleChange}
-          />
-        </Label>
+        <Form.Group>
+          <h2>Добавить новый контакт</h2>
+          <Form.Label>Имя</Form.Label>
+          <Row>
+            <Col>
+              <Form.Control
+                type="text"
+                name="name"
+                pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+                required
+                value={name}
+                onChange={handleChange}
+                placeholed="Введите имя"
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Label>Телефон</Form.Label>
+              <Form.Control
+                type="tel"
+                name="number"
+                pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+                title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+                required
+                value={number}
+                onChange={handleChange}
+                placeholed="Введите телефон"
+              />
+            </Col>
+          </Row>
+        </Form.Group>
 
-        <Label htmlFor={telId}>
-          Telephone
-          <Input
-            type="tel"
-            name="number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
-            required
-            id={telId}
-            value={number}
-            onChange={handleChange}
-          />
-        </Label>
         <Button type="submit">Add to contacts</Button>
       </Form>
-    </div>
+    </Container>
   );
 }
 

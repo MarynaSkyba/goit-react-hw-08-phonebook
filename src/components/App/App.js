@@ -1,4 +1,4 @@
-import { Container } from './App.styled';
+// import { Container } from './App.styled';
 import { Switch } from 'react-router';
 import HomeView from '../../view/HomeView';
 import LoginView from '../../view/LoginView';
@@ -22,7 +22,7 @@ export default function App() {
 
   return (
     !isFetching && (
-      <Container>
+      <div>
         <AppBar />
 
         <Switch>
@@ -42,7 +42,7 @@ export default function App() {
             <ContactsView />
           </PrivateRoute>
         </Switch>
-      </Container>
+      </div>
     )
   );
 }

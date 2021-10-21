@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import * as phonebookOperation from '../../redux/phonebook/phonebook-operations';
 import { useSelector, useDispatch } from 'react-redux';
 import { getContacts, getFilteredContacts } from '../../redux/phonebook/phonebook-selectors';
-import { Button, List, Name, Item } from './ContactList.styled';
+// import { Button, ul, Name, i } from './Contactul.styled';
+// import { Button } from 'react-bootstrap';
+import { ListGroup, Container, Button, ListGroupItem } from 'react-bootstrap';
 
 const ContactList = () => {
   const contacts = useSelector(getFilteredContacts);
-
-  // const contacts = useSelector(getContacts);
   console.log('contacts', contacts);
   const dispatch = useDispatch();
 
@@ -19,16 +19,19 @@ const ContactList = () => {
   const onDeleteContacts = id => dispatch(phonebookOperation.deleteContactAction(id));
 
   return (
-    <List>
+    <Container>
+      <h2>Список контактов</h2>
       {contacts.map(({ id, name, number }) => (
-        <Item key={id}>
-          <Name>
-            {name} : {number}
-          </Name>
-          <Button onClick={() => onDeleteContacts(id)}>Delete</Button>
-        </Item>
+        <ListGroup>
+          <ListGroupItem key={id}>
+            <p>
+              {name} : {number}
+            </p>
+            <Button onClick={() => onDeleteContacts(id)}>Удалить</Button>
+          </ListGroupItem>
+        </ListGroup>
       ))}
-    </List>
+    </Container>
   );
 };
 

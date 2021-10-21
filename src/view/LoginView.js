@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Form, Label, Input, Button } from '../components/ContactsForm/ContactForm.styled';
 import { logIn } from '../redux/auth/auth-operations';
+import { Form, Col, Row, Button, Container } from 'react-bootstrap';
 
 export default function LoginView() {
   const [email, setEmail] = useState('');
@@ -33,33 +33,45 @@ export default function LoginView() {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Label>
-        Почта
-        <Input
-          type="email"
-          name="email"
-          // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          // title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-          required
-          value={email}
-          onChange={handleChange}
-        />
-      </Label>
+    <Container>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group>
+          <Row>
+            <Col>
+              <Form.Label>Почта</Form.Label>
+              <Form.Control
+                type="email"
+                name="email"
+                // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                // title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+                required
+                value={email}
+                onChange={handleChange}
+              />
+            </Col>
+          </Row>
 
-      <Label>
-        Пароль
-        <Input
-          type="password"
-          name="password"
-          // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          // title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
-          required
-          value={password}
-          onChange={handleChange}
-        />
-      </Label>
-      <Button type="submit">Вход</Button>
-    </Form>
+          <Form.Label>Пароль</Form.Label>
+          <Row>
+            <Col>
+              <Form.Control
+                type="password"
+                name="password"
+                // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+                // title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+                required
+                value={password}
+                onChange={handleChange}
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Button type="submit">Вход</Button>
+            </Col>
+          </Row>
+        </Form.Group>
+      </Form>
+    </Container>
   );
 }

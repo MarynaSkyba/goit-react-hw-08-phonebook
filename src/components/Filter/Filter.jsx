@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilter } from '../../redux/phonebook/phonebook-selectors';
 import { changeFilter } from '../../redux/phonebook/phonebook-actions';
-import { Label, Input } from './Filter.styled';
+// import { Label, Input } from './Filter.styled';
 
 const Filter = () => {
   const value = useSelector(getFilter);
@@ -12,10 +12,10 @@ const Filter = () => {
   const onBlurHandler = () => dispatch(changeFilter(''));
 
   return (
-    <Label>
+    <label>
       Find contacts by name
-      <Input type="text" value={value} onChange={onChangeHandler} onBlur={onBlurHandler} />
-    </Label>
+      <input type="text" value={value} onChange={onChangeHandler} onBlur={onBlurHandler} />
+    </label>
   );
 };
 

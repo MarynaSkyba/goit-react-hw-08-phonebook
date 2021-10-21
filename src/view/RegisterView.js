@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Form, Label, Input, Button } from '../components/ContactsForm/ContactForm.styled';
+// import { Form, Label, Input, Button } from '../components/ContactsForm/ContactForm.styled';
 import { register } from '../redux/auth/auth-operations';
+import { Form, Col, Row, Button, Container } from 'react-bootstrap';
 
 export default function RegisterView() {
   const [name, setName] = useState('');
@@ -37,45 +38,101 @@ export default function RegisterView() {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Label>
-        Имя
-        <Input
-          type="text"
-          name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-          required
-          value={name}
-          onChange={handleChange}
-        />
-      </Label>
-      <Label>
-        Почта
-        <Input
-          type="email"
-          name="email"
-          // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          // title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-          required
-          value={email}
-          onChange={handleChange}
-        />
-      </Label>
+    <Container>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group>
+          <Row>
+            <Col>
+              <Form.Label>Имя</Form.Label>
+              <Form.Control
+                type="text"
+                name="name"
+                pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+                required
+                value={name}
+                onChange={handleChange}
+              />
+            </Col>
+          </Row>
 
-      <Label>
-        Пароль
-        <Input
-          type="password"
-          name="password"
-          // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          // title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
-          required
-          value={password}
-          onChange={handleChange}
-        />
-      </Label>
-      <Button type="submit">Зарегистрироваться</Button>
-    </Form>
+          <Form.Label>Почта</Form.Label>
+          <Row>
+            <Col>
+              <Form.Control
+                type="email"
+                name="email"
+                // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                // title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+                required
+                value={email}
+                onChange={handleChange}
+              />
+            </Col>
+          </Row>
+
+          <Form.Label>Пароль</Form.Label>
+          <Row>
+            <Col>
+              <Form.Control
+                type="password"
+                name="password"
+                // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+                // title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+                required
+                value={password}
+                onChange={handleChange}
+              />
+            </Col>
+          </Row>
+        </Form.Group>
+        <Row>
+          <Col>
+            <Button type="submit">Зарегистрироваться</Button>
+          </Col>
+        </Row>
+      </Form>
+    </Container>
+
+    // <Form onSubmit={handleSubmit}>
+    //   <Label>
+    //     Имя
+    //     <Input
+    //       type="text"
+    //       name="name"
+    //       pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+    //       title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+    //       required
+    //       value={name}
+    //       onChange={handleChange}
+    //     />
+    //   </Label>
+    //   <Label>
+    //     Почта
+    //     <Input
+    //       type="email"
+    //       name="email"
+    //       // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+    //       // title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+    //       required
+    //       value={email}
+    //       onChange={handleChange}
+    //     />
+    //   </Label>
+
+    //   <Label>
+    //     Пароль
+    //     <Input
+    //       type="password"
+    //       name="password"
+    //       // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+    //       // title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+    //       required
+    //       value={password}
+    //       onChange={handleChange}
+    //     />
+    //   </Label>
+    //   <Button type="submit">Зарегистрироваться</Button>
+    // </Form>
   );
 }
