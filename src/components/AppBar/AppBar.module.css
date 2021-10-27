@@ -18,3 +18,11 @@
   composes: link;
   color: #0d6efd;
 }
+
+.loader {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}

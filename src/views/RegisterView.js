@@ -76,6 +76,8 @@ export default function RegisterView() {
                 required
                 value={password}
                 onChange={handleChange}
+                pattern=".{8,}"
+                title="Пароль должен состоять минимум из 8 цифр"
               />
             </Col>
           </Row>

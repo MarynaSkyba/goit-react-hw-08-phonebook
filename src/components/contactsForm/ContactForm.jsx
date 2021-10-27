@@ -2,11 +2,14 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Col, Row, Button, Container } from 'react-bootstrap';
 import * as phonebookOperation from '../../redux/phonebook/phonebook-operations';
+import { useSelector } from 'react-redux';
+import { getContacts } from '../../redux/phonebook/phonebook-selectors';
 
 export function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
 
   const onSubmit = (name, number) =>
     dispatch(phonebookOperation.addContactAction({ name, number }));
@@ -16,11 +19,19 @@ export function ContactForm() {
     name === 'name' ? setName(value) : setNumber(value);
   };
 
+  const checkName = name => {
+    return contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase());
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit(name, number);
-    setName('');
-    setNumber('');
+    if (checkName(name)) {
+      alert(`${name} is already in contacts`);
+    } else {
+      onSubmit(name, number);
+      setName('');
+      setNumber('');
+    }
   };
 
   return (
